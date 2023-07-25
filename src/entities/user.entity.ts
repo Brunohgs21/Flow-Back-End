@@ -21,7 +21,7 @@ class User {
   email: string;
 
   @Column({ unique: true })
-  phone: number;
+  phone: string;
 
   @Column()
   password: string;

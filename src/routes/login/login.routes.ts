@@ -1,7 +1,8 @@
 import { Router } from "express";
+import { createTokenController } from "../../controllers/login/login.controller";
 
 const loginRoutes = Router();
 
-loginRoutes.post("");
+loginRoutes.post("", createTokenController);
 
 export { loginRoutes };
