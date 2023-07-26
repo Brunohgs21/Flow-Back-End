@@ -36,4 +36,4 @@ const createUserService = async (
   return userSchemaResponse.parse(user);
 };
 
-export { createUserService };
+export default createUserService;
