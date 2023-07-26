@@ -1,14 +1,14 @@
 import {
+  Entity,
+  PrimaryGeneratedColumn,
   Column,
   CreateDateColumn,
-  Entity,
   ManyToOne,
   OneToMany,
-  PrimaryGeneratedColumn,
 } from "typeorm";
 import { User } from "./user.entity";
-import { Email } from "./email.entity";
-import { Phone } from "./phone.entity";
+// import { Email } from "./email.entity";
+// import { Phone } from "./phone.entity";
 
 @Entity("contacts")
 class Contact {
@@ -24,11 +24,16 @@ class Contact {
   @ManyToOne(() => User, (user) => user.contacts)
   user: User;
 
-  @OneToMany(() => Email, (email) => email.contact)
-  emails: Email[];
+  @Column()
+  email: string;
+  @Column()
+  phone: string;
 
-  @OneToMany(() => Phone, (phone) => phone.contact)
-  phones: Phone[];
+  // @OneToMany(() => Email, (email) => email.contact, { cascade: ["insert"] }) // Add cascade option here
+  // emails: Email[];
+
+  // @OneToMany(() => Phone, (phone) => phone.contact, { cascade: ["insert"] }) // Add cascade option here
+  // phones: Phone[];
 }
 
 export { Contact };

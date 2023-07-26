@@ -4,7 +4,7 @@ const contactSchema = z.object({
   id: z.string(),
   name: z.string(),
   email: z.string().email(),
-  phone: z.number(),
+  phone: z.string(),
   createdAt: z.date(),
 });
 
@@ -13,7 +13,9 @@ const contactSchemaRequest = contactSchema.omit({
   createdAt: true,
 });
 
-const contactSchemaResponse = z.array(contactSchema);
+const contactSchemaResponse = contactSchema;
+
+const allContactSchema = z.array(contactSchemaRequest);
 
 const contactSchemaUpdate = contactSchema
   .omit({
@@ -27,4 +29,5 @@ export {
   contactSchemaRequest,
   contactSchemaResponse,
   contactSchemaUpdate,
+  allContactSchema,
 };

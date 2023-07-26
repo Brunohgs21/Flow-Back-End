@@ -6,8 +6,8 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Contact } from "./contact.entity";
-import { Email } from "./email.entity";
-import { Phone } from "./phone.entity";
+// import { Email } from "./email.entity";
+// import { Phone } from "./phone.entity";
 
 @Entity("users")
 class User {
@@ -29,14 +29,13 @@ class User {
   @CreateDateColumn()
   createdAt: Date;
 
-  @OneToMany(() => Contact, (contact) => contact.user)
+  @OneToMany(() => Contact, (contact) => contact.user, { cascade: ["insert"] }) // Add cascade option here
   contacts: Contact[];
-
   // @OneToMany(() => Email, (email) => email.user)
   // emails: Email[];
 
-  @OneToMany(() => Phone, (phone) => phone.user)
-  phones: Phone[];
+  // @OneToMany(() => Phone, (phone) => phone.user)
+  // phones: Phone[];
 }
 
 export { User };
