@@ -2,7 +2,7 @@
  * @swagger
  * tags:
  *   name: Users
- *   description: Rotas relacionadas aos usuários
+ *   description: Routes related to users
  */
 
 import { Router } from "express";
@@ -22,10 +22,10 @@ const userRoutes = Router();
  * @swagger
  * /users:
  *   post:
- *     summary: Cria um novo usuário.
+ *     summary: Create a new user.
  *     tags: [Users]
  *     requestBody:
- *       description: Objeto contendo os dados do novo usuário.
+ *       description: Object containing data of the new user.
  *       required: true
  *       content:
  *         application/json:
@@ -44,7 +44,7 @@ const userRoutes = Router();
  *               password: "123456"
  *     responses:
  *       200:
- *         description: Sucesso. Retorna os dados do usuário criado.
+ *         description: Success. Returns the data of the created user.
  *         content:
  *           application/json:
  *             schema:
@@ -70,13 +70,47 @@ userRoutes.post(
 /**
  * @swagger
  * /users:
+ *   get:
+ *     summary: List logged-in user.
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Success. Returns a list of users.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: number
+ *                   name:
+ *                     type: string
+ *                   email:
+ *                     type: string
+ *                 example:
+ *                   - id: 1
+ *                     name: "John Doe"
+ *                     email: "johndoe@example.com"
+ *                   - id: 2
+ *                     name: "Jane Smith"
+ *                     email: "janesmith@example.com"
+ */
+userRoutes.get("/", ensureAuthMiddleware, listUserController);
+
+/**
+ * @swagger
+ * /users:
  *   patch:
- *     summary: Atualiza um usuário existente.
+ *     summary: Update an existing user.
  *     tags: [Users]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
- *       description: Objeto contendo os dados do usuário a ser atualizado.
+ *       description: Object containing data of the user to be updated.
  *       required: true
  *       content:
  *         application/json:
@@ -95,7 +129,7 @@ userRoutes.post(
  *               password: "123456"
  *     responses:
  *       200:
- *         description: Sucesso. Retorna os dados do usuário atualizado.
+ *         description: Success. Returns the data of the updated user.
  *         content:
  *           application/json:
  *             schema:
@@ -123,13 +157,13 @@ userRoutes.patch(
  * @swagger
  * /users:
  *   delete:
- *     summary: Deleta um usuário existente.
+ *     summary: Delete an existing user.
  *     tags: [Users]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Sucesso. Retorna uma mensagem indicando que o usuário foi deletado.
+ *         description: Success. Returns a message indicating that the user was deleted.
  *         content:
  *           application/json:
  *             schema:
@@ -138,42 +172,8 @@ userRoutes.patch(
  *                 message:
  *                   type: string
  *             example:
- *               message: "Usuário deletado com sucesso."
+ *               message: "User deleted successfully."
  */
 userRoutes.delete("/", ensureAuthMiddleware, deleteUserController);
-
-/**
- * @swagger
- * /users:
- *   get:
- *     summary: Lista usuário logado.
- *     tags: [Users]
- *     security:
- *       - bearerAuth: []
- *     responses:
- *       200:
- *         description: Sucesso. Retorna uma lista de usuários.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   id:
- *                     type: number
- *                   name:
- *                     type: string
- *                   email:
- *                     type: string
- *                 example:
- *                   - id: 1
- *                     name: "John Doe"
- *                     email: "johndoe@example.com"
- *                   - id: 2
- *                     name: "Jane Smith"
- *                     email: "janesmith@example.com"
- */
-userRoutes.get("/", ensureAuthMiddleware, listUserController);
 
 export { userRoutes };

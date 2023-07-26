@@ -2,7 +2,7 @@
  * @swagger
  * tags:
  *   name: Login
- *   description: Rotas relacionadas ao login
+ *   description: Routes related to login
  */
 
 import { Router } from "express";
@@ -14,10 +14,10 @@ const loginRoutes = Router();
  * @swagger
  * /login:
  *   post:
- *     summary: Cria um token de autenticação.
+ *     summary: Create an authentication token.
  *     tags: [Login]
  *     requestBody:
- *       description: Objeto contendo as credenciais do usuário.
+ *       description: Object containing user credentials.
  *       required: true
  *       content:
  *         application/json:
@@ -29,11 +29,11 @@ const loginRoutes = Router();
  *               password:
  *                 type: string
  *             example:
- *               username: "usuario123"
- *               password: "senha123"
+ *               username: "user123"
+ *               password: "password123"
  *     responses:
  *       200:
- *         description: Sucesso. Retorna um token de autenticação.
+ *         description: Success. Returns an authentication token.
  *         content:
  *           application/json:
  *             schema:

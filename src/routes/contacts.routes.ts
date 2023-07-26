@@ -2,7 +2,7 @@
  * @swagger
  * tags:
  *   name: Contacts
- *   description: Rotas relacionadas aos contatos
+ *   description: Routes related to contacts
  */
 
 import { Router } from "express";
@@ -27,12 +27,12 @@ const contactsRoutes = Router();
  * @swagger
  * /contacts:
  *   post:
- *     summary: Cria um novo contato.
+ *     summary: Create a new contact.
  *     tags: [Contacts]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
- *       description: Objeto contendo os dados do novo contato.
+ *       description: Object containing data of the new contact.
  *       required: true
  *       content:
  *         application/json:
@@ -51,7 +51,7 @@ const contactsRoutes = Router();
  *               phone: "555-1234"
  *     responses:
  *       200:
- *         description: Sucesso. Retorna os dados do contato criado.
+ *         description: Success. Returns the data of the created contact.
  *         content:
  *           application/json:
  *             schema:
@@ -82,13 +82,13 @@ contactsRoutes.post(
  * @swagger
  * /contacts:
  *   get:
- *     summary: Lista todos os contatos.
+ *     summary: List all contacts.
  *     tags: [Contacts]
  *     security:
  *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Sucesso. Retorna uma lista de contatos.
+ *         description: Success. Returns a list of contacts.
  *         content:
  *           application/json:
  *             schema:
@@ -120,19 +120,19 @@ contactsRoutes.get("", ensureAuthMiddleware, listAllContactsController);
  * @swagger
  * /contacts/{id}:
  *   patch:
- *     summary: Atualiza um contato existente.
+ *     summary: Update an existing contact.
  *     tags: [Contacts]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - name: id
  *         in: path
- *         description: ID do contato a ser atualizado.
+ *         description: ID of the contact to be updated.
  *         required: true
  *         schema:
  *           type: number
  *     requestBody:
- *       description: Objeto contendo os dados do contato a ser atualizado.
+ *       description: Object containing data of the contact to be updated.
  *       required: true
  *       content:
  *         application/json:
@@ -151,7 +151,7 @@ contactsRoutes.get("", ensureAuthMiddleware, listAllContactsController);
  *               phone: "555-1234"
  *     responses:
  *       200:
- *         description: Sucesso. Retorna os dados do contato atualizado.
+ *         description: Success. Returns the data of the updated contact.
  *         content:
  *           application/json:
  *             schema:
@@ -184,20 +184,20 @@ contactsRoutes.patch(
  * @swagger
  * /contacts/{id}:
  *   delete:
- *     summary: Deleta um contato existente.
+ *     summary: Delete an existing contact.
  *     tags: [Contacts]
  *     security:
  *       - bearerAuth: []
  *     parameters:
  *       - name: id
  *         in: path
- *         description: ID do contato a ser deletado.
+ *         description: ID of the contact to be deleted.
  *         required: true
  *         schema:
  *           type: number
  *     responses:
  *       200:
- *         description: Sucesso. Retorna uma mensagem indicando que o contato foi deletado.
+ *         description: Success. Returns a message indicating that the contact was deleted.
  *         content:
  *           application/json:
  *             schema:
@@ -206,7 +206,7 @@ contactsRoutes.patch(
  *                 message:
  *                   type: string
  *             example:
- *               message: "Contato deletado com sucesso."
+ *               message: "Contact deleted successfully."
  */
 contactsRoutes.delete(
   "/:id",
