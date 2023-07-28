@@ -7,10 +7,16 @@ import { handleAppError } from "./middlewares/handleAppError.middleware";
 import { loginRoutes } from "./routes/login.routes";
 import { userRoutes } from "./routes/users.routes";
 import { contactsRoutes } from "./routes/contacts.routes";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
-// Configuração do Swagger
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+  })
+);
+
 const swaggerOptions = {
   swaggerDefinition: {
     info: {
@@ -20,12 +26,11 @@ const swaggerOptions = {
     },
     basePath: "http://localhost:3000/api-docs",
   },
-  apis: ["src/routes/*.ts"], // Caminho para os arquivos com as rotas documentadas
+  apis: ["src/routes/*.ts"],
 };
 
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
 
-// Rota para acessar a documentação Swagger
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use("/users", userRoutes);
 app.use("/login", loginRoutes);
