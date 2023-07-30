@@ -1,6 +1,11 @@
+import { loginResponseSchema } from "../../schemas/login.schema";
+import { z } from "zod";
+
 type TLoginRequest = {
   email: string;
   password: string;
 };
 
-export { TLoginRequest };
+type TLoginResponse = z.infer<typeof loginResponseSchema>;
+
+export { TLoginRequest, TLoginResponse };

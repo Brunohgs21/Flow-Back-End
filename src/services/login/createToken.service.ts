@@ -5,6 +5,7 @@ import { AppError } from "../../errors/AppError";
 import { TLoginRequest } from "../../interfaces/login/login.interface";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
+import { userSchemaResponse } from "../../schemas/users.schema";
 
 const createTokenService = async ({ email, password }: TLoginRequest) => {
   const userRepository = AppDataSource.getRepository(User);
@@ -35,8 +36,9 @@ const createTokenService = async ({ email, password }: TLoginRequest) => {
       subject: user.id,
     }
   );
+  const loggedUser = userSchemaResponse.parse(user);
 
-  return token;
+  return { token, loggedUser };
 };
 
 export { createTokenService };
