@@ -17,13 +17,13 @@ const createTokenService = async ({ email, password }: TLoginRequest) => {
   });
 
   if (!user) {
-    throw new AppError("Invalid credentials", 403);
+    throw new AppError("Wrong email or password!", 403);
   }
 
   const passwordMatch = await compare(password, user.password);
 
   if (!passwordMatch) {
-    throw new AppError("Invalid credentials", 403);
+    throw new AppError("Whrong email or password!", 403);
   }
 
   const token = jwt.sign(

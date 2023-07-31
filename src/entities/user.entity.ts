@@ -29,7 +29,10 @@ class User {
   @CreateDateColumn()
   createdAt: Date;
 
-  @OneToMany(() => Contact, (contact) => contact.user, { cascade: ["insert"] }) // Add cascade option here
+  @OneToMany(() => Contact, (contact) => contact.user, {
+    cascade: true,
+    onDelete: "CASCADE",
+  })
   contacts: Contact[];
   // @OneToMany(() => Email, (email) => email.user)
   // emails: Email[];
