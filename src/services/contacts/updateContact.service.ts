@@ -1,9 +1,5 @@
 import { AppDataSource } from "../../data-source";
 import { Contact } from "../../entities/contact.entity";
-import {
-  TContactResponse,
-  TContactUpdate,
-} from "../../interfaces/contacts/contacts.interfaces";
 
 const updateContactService = async (contactId: string, data: any) => {
   const contactRepository = AppDataSource.getRepository(Contact);

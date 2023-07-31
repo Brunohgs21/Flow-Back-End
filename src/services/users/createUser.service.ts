@@ -19,8 +19,18 @@ const createUserService = async (
     },
   });
 
+  const findPhone = await userRepository.findOne({
+    where: {
+      phone,
+    },
+  });
+
+  if (findPhone) {
+    throw new AppError("Phone already registered!", 409);
+  }
+
   if (findUser) {
-    throw new AppError("user already exists", 409);
+    throw new AppError("User already registered!", 409);
   }
 
   const hashedPassword = await hash(password, 10);
