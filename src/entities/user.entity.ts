@@ -6,8 +6,6 @@ import {
   PrimaryGeneratedColumn,
 } from "typeorm";
 import { Contact } from "./contact.entity";
-// import { Email } from "./email.entity";
-// import { Phone } from "./phone.entity";
 
 @Entity("users")
 class User {
@@ -34,11 +32,6 @@ class User {
     onDelete: "CASCADE",
   })
   contacts: Contact[];
-  // @OneToMany(() => Email, (email) => email.user)
-  // emails: Email[];
-
-  // @OneToMany(() => Phone, (phone) => phone.user)
-  // phones: Phone[];
 }
 
 export { User };

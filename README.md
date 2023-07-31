@@ -1,6 +1,8 @@
 # Flow-Back-End
 
 API Documentation
+Use yarn command to install all package.
+Use yarn dev to run server.
 Welcome to the documentation for our API! This document provides an overview of the available endpoints, their functionalities, required parameters, and expected responses.
 
 Authentication

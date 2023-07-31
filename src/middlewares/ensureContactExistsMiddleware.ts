@@ -24,7 +24,6 @@ const ensureContactExistsMiddleware = async (
       id: contactId,
     },
   });
-  console.log("aquiiiii2");
   if (!contact) {
     return res.status(404).json({
       message: "Contact not found",
