@@ -6,7 +6,7 @@ const ensureIsOwnerMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<void | Response> => {
   const contactId = req.params.id;
   const userId = res.locals.userId;
 

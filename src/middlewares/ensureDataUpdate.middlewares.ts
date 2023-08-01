@@ -6,7 +6,7 @@ const ensureDataUpdate = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<void | Response> => {
   const { email, phone } = req.body;
 
   if (email) {

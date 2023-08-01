@@ -1,7 +1,11 @@
 import { AppDataSource } from "../../data-source";
 import { Contact } from "../../entities/contact.entity";
+import { TContactResponse } from "../../interfaces/contacts/contacts.interfaces";
 
-const updateContactService = async (contactId: string, data: any) => {
+const updateContactService = async (
+  contactId: string,
+  data: any
+): Promise<Contact[] | void> => {
   const contactRepository = AppDataSource.getRepository(Contact);
   const oldContact = await contactRepository.findOne({
     where: {

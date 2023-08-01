@@ -1,4 +1,7 @@
-import { loginResponseSchema } from "../../schemas/login.schema";
+import {
+  loggedResponseSchema,
+  loginResponseSchema,
+} from "../../schemas/login.schema";
 import { z } from "zod";
 
 type TLoginRequest = {
@@ -7,5 +10,6 @@ type TLoginRequest = {
 };
 
 type TLoginResponse = z.infer<typeof loginResponseSchema>;
+type TLoggedResponse = z.infer<typeof loggedResponseSchema>;
 
-export { TLoginRequest, TLoginResponse };
+export { TLoginRequest, TLoginResponse, TLoggedResponse };

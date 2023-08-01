@@ -11,7 +11,7 @@ const ensureContactExistsMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
-) => {
+): Promise<Response | void> => {
   const contactId = req.params.id;
 
   if (!isValidUUID(contactId)) {

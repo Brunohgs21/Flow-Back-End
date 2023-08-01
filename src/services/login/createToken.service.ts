@@ -2,12 +2,19 @@ import { compare } from "bcryptjs";
 import { AppDataSource } from "../../data-source";
 import { User } from "../../entities/user.entity";
 import { AppError } from "../../errors/AppError";
-import { TLoginRequest } from "../../interfaces/login/login.interface";
+import {
+  TLoggedResponse,
+  TLoginRequest,
+  TLoginResponse,
+} from "../../interfaces/login/login.interface";
 import jwt from "jsonwebtoken";
 import "dotenv/config";
 import { userSchemaResponse } from "../../schemas/users.schema";
 
-const createTokenService = async ({ email, password }: TLoginRequest) => {
+const createTokenService = async ({
+  email,
+  password,
+}: TLoginRequest): Promise<TLoggedResponse> => {
   const userRepository = AppDataSource.getRepository(User);
 
   const user = await userRepository.findOne({
