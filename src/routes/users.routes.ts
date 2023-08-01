@@ -15,6 +15,7 @@ import {
   updateUserController,
 } from "../controllers/users/users.controllers";
 import { ensureAuthMiddleware } from "../middlewares/ensureAuth.middleware";
+import ensureDataUpdate from "../middlewares/ensureDataUpdate.middlewares";
 
 const userRoutes = Router();
 
@@ -150,6 +151,7 @@ userRoutes.patch(
   "/",
   ensureAuthMiddleware,
   ensureDataIsValid(userSchemaUpdate),
+  ensureDataUpdate,
   updateUserController
 );
 

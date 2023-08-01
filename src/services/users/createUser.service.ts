@@ -30,7 +30,7 @@ const createUserService = async (
   }
 
   if (findUser) {
-    throw new AppError("User already registered!", 409);
+    throw new AppError("Email already registered!", 409);
   }
 
   const hashedPassword = await hash(password, 10);
