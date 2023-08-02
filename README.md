@@ -8,13 +8,12 @@ Welcome to the documentation for our API! This document provides an overview of 
 
 Most of the endpoints in this API require authentication using a bearer token. To authenticate, you should obtain a token by making a POST request to the `/login` endpoint with valid credentials. The token should then be included in the `Authorization` header of subsequent requests to authenticated endpoints.
 
+```http
 ## Users
 
 ### Create User
 
 **Request:**
-
-```http
 POST /users
 Authorization: Required
 Content-Type: application/json
@@ -28,7 +27,6 @@ Content-Type: application/json
 Response:
 
 json
-
 {
   "id": "user_id",
   "name": "John Doe",
@@ -39,7 +37,6 @@ Update User
 Request:
 
 http
-
 PATCH /users
 Authorization: Required
 Content-Type: application/json
@@ -53,7 +50,6 @@ Content-Type: application/json
 Response:
 
 json
-
 {
   "id": "user_id",
   "name": "Updated Name",
@@ -64,14 +60,12 @@ Delete User
 Request:
 
 http
-
 DELETE /users
 Authorization: Required
 
 Response:
 
 json
-
 {
   "message": "User has been deleted."
 }
@@ -80,14 +74,12 @@ List Users
 Request:
 
 http
-
 GET /users
 Authorization: Required
 
 Response:
 
 json
-
 [
   {
     "id": "user_id",
@@ -107,7 +99,6 @@ Create Contact
 Request:
 
 http
-
 POST /contacts
 Authorization: Required
 Content-Type: application/json
@@ -121,7 +112,6 @@ Content-Type: application/json
 Response:
 
 json
-
 {
   "id": "contact_id",
   "name": "Contact Name",
@@ -133,7 +123,6 @@ Update Contact
 Request:
 
 http
-
 PATCH /contacts/{id}
 Authorization: Required
 Content-Type: application/json
@@ -147,7 +136,6 @@ Content-Type: application/json
 Response:
 
 json
-
 {
   "id": "contact_id",
   "name": "Updated Name",
@@ -159,14 +147,12 @@ Delete Contact
 Request:
 
 http
-
 DELETE /contacts/{id}
 Authorization: Required
 
 Response:
 
 json
-
 {
   "message": "Contact has been deleted."
 }
@@ -175,14 +161,12 @@ List All Contacts
 Request:
 
 http
-
 GET /contacts
 Authorization: Required
 
 Response:
 
 json
-
 [
   {
     "id": "contact_id",
