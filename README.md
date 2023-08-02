@@ -8,9 +8,9 @@ Welcome to the documentation for our API! This document provides an overview of 
 
 Most of the endpoints in this API require authentication using a bearer token. To authenticate, you should obtain a token by making a POST request to the `/login` endpoint with valid credentials. The token should then be included in the `Authorization` header of subsequent requests to authenticated endpoints.
 
-#Users
+# Users
 
-##Create User
+## Create User
 
 Request:
 POST /users
@@ -37,7 +37,7 @@ json
 "createdAt: DATE"
 }
 
-##Update User
+## Update User
 
 Request:
 
@@ -65,7 +65,7 @@ json
 "createdAt": DATE,
 }
 
-##Delete User
+## Delete User
 
 Request:
 
@@ -77,7 +77,7 @@ Response:
 
 No response
 
-##List User
+## List User
 
 Request:
 
@@ -99,9 +99,9 @@ json
 },
 ```
 
-#Contacts
+# Contacts
 
-##Create Contact
+## Create Contact
 
 Request:
 
@@ -128,7 +128,7 @@ json
 "phone": "555-1234"
 }
 
-##Update Contact
+## Update Contact
 
 Request:
 
@@ -155,7 +155,7 @@ json
 "phone": "555-5678"
 }
 
-##Delete Contact
+## Delete Contact
 
 Request:
 
@@ -167,7 +167,7 @@ Response:
 
 No response
 
-##List All Contacts
+## List All Contacts
 
 Request:
 
