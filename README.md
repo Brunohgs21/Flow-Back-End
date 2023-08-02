@@ -8,9 +8,10 @@ Welcome to the documentation for our API! This document provides an overview of 
 
 Most of the endpoints in this API require authentication using a bearer token. To authenticate, you should obtain a token by making a POST request to the `/login` endpoint with valid credentials. The token should then be included in the `Authorization` header of subsequent requests to authenticated endpoints.
 
-Users
+#Users
 
-Create User
+##Create User
+
 Request:
 POST /users
 Authorization: Required
@@ -28,17 +29,16 @@ Content-Type: application/json
 Response:
 json
 
-```
 {
-  "id": "user_id",
-  "name": "John Doe",
-  "email": "johndoe@example.com"
-  "phone": "2121222",
-  "createdAt: DATE"
+"id": "user_id",
+"name": "John Doe",
+"email": "johndoe@example.com"
+"phone": "2121222",
+"createdAt: DATE"
 }
-```
 
-Update User
+##Update User
+
 Request:
 
 http
@@ -57,46 +57,52 @@ Content-Type: application/json
 Response:
 json
 
-```
 {
-  "id": "user_id",
-  "name": "Updated Name",
-  "email": "updated@example.com",
-  "phone": "2121222",
-  "createdAt": DATE,
+"id": "user_id",
+"name": "Updated Name",
+"email": "updated@example.com",
+"phone": "2121222",
+"createdAt": DATE,
 }
-```
 
-Delete User
+##Delete User
+
 Request:
 
 http
-DELETE /users/id
+DELETE /users
 Authorization: Required
 
 Response:
 
 No response
 
-List User
+##List User
+
 Request:
 
 http
-GET /users/id
+GET /users
 Authorization: Required
 
 Response:
 
 json
 
+```
 {
 "id": "user_id",
 "name": "John Doe",
-"email": "johndoe@example.com"
+"email": "johndoe@example.com",
+"phone": "2121352653",
+"createdAt": DATE
 },
+```
 
-Contacts
-Create Contact
+#Contacts
+
+##Create Contact
+
 Request:
 
 http
@@ -104,11 +110,13 @@ POST /contacts
 Authorization: Required
 Content-Type: application/json
 
+```
 {
 "name": "Contact Name",
 "email": "contact@example.com",
 "phone": "555-1234"
 }
+```
 
 Response:
 
@@ -120,7 +128,8 @@ json
 "phone": "555-1234"
 }
 
-Update Contact
+##Update Contact
+
 Request:
 
 http
@@ -128,11 +137,13 @@ PATCH /contacts/{id}
 Authorization: Required
 Content-Type: application/json
 
+```
 {
 "name": "Updated Name",
 "email": "updated@example.com",
 "phone": "555-5678"
 }
+```
 
 Response:
 
@@ -144,7 +155,8 @@ json
 "phone": "555-5678"
 }
 
-Delete Contact
+##Delete Contact
+
 Request:
 
 http
@@ -153,12 +165,10 @@ Authorization: Required
 
 Response:
 
-json
-{
-"message": "Contact has been deleted."
-}
+No response
 
-List All Contacts
+##List All Contacts
+
 Request:
 
 http
