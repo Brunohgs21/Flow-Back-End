@@ -8,30 +8,35 @@ Welcome to the documentation for our API! This document provides an overview of 
 
 Most of the endpoints in this API require authentication using a bearer token. To authenticate, you should obtain a token by making a POST request to the `/login` endpoint with valid credentials. The token should then be included in the `Authorization` header of subsequent requests to authenticated endpoints.
 
-```http
-## Users
+Users
 
-### Create User
-
-**Request:**
+Create User
+Request:
 POST /users
 Authorization: Required
 Content-Type: application/json
 
+```
 {
   "name": "John Doe",
   "email": "johndoe@example.com",
-  "password": "123456"
+  "password": "123456",
+  "phone": "2121222"
 }
+```
 
 Response:
-
 json
+
+```
 {
   "id": "user_id",
   "name": "John Doe",
   "email": "johndoe@example.com"
+  "phone": "2121222",
+  "createdAt: DATE"
 }
+```
 
 Update User
 Request:
@@ -41,58 +46,54 @@ PATCH /users
 Authorization: Required
 Content-Type: application/json
 
+```
 {
   "name": "Updated Name",
   "email": "updated@example.com",
-  "password": "newpassword"
+  "phone": "2121222"
 }
+```
 
 Response:
-
 json
+
+```
 {
   "id": "user_id",
   "name": "Updated Name",
-  "email": "updated@example.com"
+  "email": "updated@example.com",
+  "phone": "2121222",
+  "createdAt": DATE,
 }
+```
 
 Delete User
 Request:
 
 http
-DELETE /users
+DELETE /users/id
 Authorization: Required
 
 Response:
 
-json
-{
-  "message": "User has been deleted."
-}
+No response
 
-List Users
+List User
 Request:
 
 http
-GET /users
+GET /users/id
 Authorization: Required
 
 Response:
 
 json
-[
-  {
-    "id": "user_id",
-    "name": "John Doe",
-    "email": "johndoe@example.com"
-  },
-  {
-    "id": "user_id",
-    "name": "Jane Doe",
-    "email": "janedoe@example.com"
-  },
-  // ...
-]
+
+{
+"id": "user_id",
+"name": "John Doe",
+"email": "johndoe@example.com"
+},
 
 Contacts
 Create Contact
@@ -104,19 +105,19 @@ Authorization: Required
 Content-Type: application/json
 
 {
-  "name": "Contact Name",
-  "email": "contact@example.com",
-  "phone": "555-1234"
+"name": "Contact Name",
+"email": "contact@example.com",
+"phone": "555-1234"
 }
 
 Response:
 
 json
 {
-  "id": "contact_id",
-  "name": "Contact Name",
-  "email": "contact@example.com",
-  "phone": "555-1234"
+"id": "contact_id",
+"name": "Contact Name",
+"email": "contact@example.com",
+"phone": "555-1234"
 }
 
 Update Contact
@@ -128,19 +129,19 @@ Authorization: Required
 Content-Type: application/json
 
 {
-  "name": "Updated Name",
-  "email": "updated@example.com",
-  "phone": "555-5678"
+"name": "Updated Name",
+"email": "updated@example.com",
+"phone": "555-5678"
 }
 
 Response:
 
 json
 {
-  "id": "contact_id",
-  "name": "Updated Name",
-  "email": "updated@example.com",
-  "phone": "555-5678"
+"id": "contact_id",
+"name": "Updated Name",
+"email": "updated@example.com",
+"phone": "555-5678"
 }
 
 Delete Contact
@@ -154,7 +155,7 @@ Response:
 
 json
 {
-  "message": "Contact has been deleted."
+"message": "Contact has been deleted."
 }
 
 List All Contacts
@@ -168,19 +169,19 @@ Response:
 
 json
 [
-  {
-    "id": "contact_id",
-    "name": "Contact Name 1",
-    "email": "contact1@example.com",
-    "phone": "555-1234"
-  },
-  {
-    "id": "contact_id",
-    "name": "Contact Name 2",
-    "email": "contact2@example.com",
-    "phone": "555-5678"
-  },
-  // ...
+{
+"id": "contact_id",
+"name": "Contact Name 1",
+"email": "contact1@example.com",
+"phone": "555-1234"
+},
+{
+"id": "contact_id",
+"name": "Contact Name 2",
+"email": "contact2@example.com",
+"phone": "555-5678"
+},
+// ...
 ]
 
 Please ensure that you include the required Authorization header with a valid bearer token when accessing authenticated endpoints.
@@ -188,4 +189,7 @@ Please ensure that you include the required Authorization header with a valid be
 For more details on each endpoint, including example responses, refer to the corresponding section in this documentation.
 
 Happy coding!
+
+```
+
 ```
