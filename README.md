@@ -1,6 +1,6 @@
 # API Documentation
 
-**Use yarn command to install all packages. Use yarn dev to run the server.**
+**Use yarn command to install all packages.Use yarn typeorm migration:run -d src/data-source.ts to run all migrations. Use yarn dev to run the server.**
 
 Welcome to the documentation for our API! This document provides an overview of the available endpoints, their functionalities, required parameters, and expected responses.
 
@@ -10,8 +10,7 @@ Most of the endpoints in this API require authentication using a bearer token. T
 
 ## Users
 
-<details>
-<summary>Create User</summary>
+### Create User
 
 **Request:**
 
@@ -25,24 +24,22 @@ Content-Type: application/json
   "email": "johndoe@example.com",
   "password": "123456"
 }
-Save to grepper
+
 Response:
 
 json
-Copy code
+
 {
   "id": "user_id",
   "name": "John Doe",
   "email": "johndoe@example.com"
 }
-Save to grepper
-</details>
-<details>
-<summary>Update User</summary>
+
+Update User
 Request:
 
 http
-Copy code
+
 PATCH /users
 Authorization: Required
 Content-Type: application/json
@@ -52,49 +49,45 @@ Content-Type: application/json
   "email": "updated@example.com",
   "password": "newpassword"
 }
-Save to grepper
+
 Response:
 
 json
-Copy code
+
 {
   "id": "user_id",
   "name": "Updated Name",
   "email": "updated@example.com"
 }
-Save to grepper
-</details>
-<details>
-<summary>Delete User</summary>
+
+Delete User
 Request:
 
 http
-Copy code
+
 DELETE /users
 Authorization: Required
-Save to grepper
+
 Response:
 
 json
-Copy code
+
 {
   "message": "User has been deleted."
 }
-Save to grepper
-</details>
-<details>
-<summary>List Users</summary>
+
+List Users
 Request:
 
 http
-Copy code
+
 GET /users
 Authorization: Required
-Save to grepper
+
 Response:
 
 json
-Copy code
+
 [
   {
     "id": "user_id",
@@ -108,15 +101,13 @@ Copy code
   },
   // ...
 ]
-Save to grepper
-</details>
+
 Contacts
-<details>
-<summary>Create Contact</summary>
+Create Contact
 Request:
 
 http
-Copy code
+
 POST /contacts
 Authorization: Required
 Content-Type: application/json
@@ -126,25 +117,23 @@ Content-Type: application/json
   "email": "contact@example.com",
   "phone": "555-1234"
 }
-Save to grepper
+
 Response:
 
 json
-Copy code
+
 {
   "id": "contact_id",
   "name": "Contact Name",
   "email": "contact@example.com",
   "phone": "555-1234"
 }
-Save to grepper
-</details>
-<details>
-<summary>Update Contact</summary>
+
+Update Contact
 Request:
 
 http
-Copy code
+
 PATCH /contacts/{id}
 Authorization: Required
 Content-Type: application/json
@@ -154,50 +143,46 @@ Content-Type: application/json
   "email": "updated@example.com",
   "phone": "555-5678"
 }
-Save to grepper
+
 Response:
 
 json
-Copy code
+
 {
   "id": "contact_id",
   "name": "Updated Name",
   "email": "updated@example.com",
   "phone": "555-5678"
 }
-Save to grepper
-</details>
-<details>
-<summary>Delete Contact</summary>
+
+Delete Contact
 Request:
 
 http
-Copy code
+
 DELETE /contacts/{id}
 Authorization: Required
-Save to grepper
+
 Response:
 
 json
-Copy code
+
 {
   "message": "Contact has been deleted."
 }
-Save to grepper
-</details>
-<details>
-<summary>List All Contacts</summary>
+
+List All Contacts
 Request:
 
 http
-Copy code
+
 GET /contacts
 Authorization: Required
-Save to grepper
+
 Response:
 
 json
-Copy code
+
 [
   {
     "id": "contact_id",
@@ -213,25 +198,10 @@ Copy code
   },
   // ...
 ]
-Save to grepper
-</details>
+
 Please ensure that you include the required Authorization header with a valid bearer token when accessing authenticated endpoints.
 
 For more details on each endpoint, including example responses, refer to the corresponding section in this documentation.
 
 Happy coding!
-
-html
-Copy code
-<script>
-  function copyToClipboard(text) {
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-    alert('Request copied to clipboard!');
-  }
-</script>
 ```
