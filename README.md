@@ -1,98 +1,237 @@
-# Flow-Back-End
+# API Documentation
 
-API Documentation
-Use yarn command to install all package.
-Use yarn dev to run server.
+**Use yarn command to install all packages. Use yarn dev to run the server.**
+
 Welcome to the documentation for our API! This document provides an overview of the available endpoints, their functionalities, required parameters, and expected responses.
 
-Authentication
-Most of the endpoints in this API require authentication using a bearer token. To authenticate, you should obtain a token by making a POST request to the /login endpoint with valid credentials. The token should then be included in the Authorization header of subsequent requests to authenticated endpoints.
+## Authentication
 
-Users
+Most of the endpoints in this API require authentication using a bearer token. To authenticate, you should obtain a token by making a POST request to the `/login` endpoint with valid credentials. The token should then be included in the `Authorization` header of subsequent requests to authenticated endpoints.
 
-Create User
-Create a new user by sending a POST request to the /users endpoint. You should provide the following data in the request body:
+## Users
+
+<details>
+<summary>Create User</summary>
+
+**Request:**
+
+```http
+POST /users
+Authorization: Required
+Content-Type: application/json
 
 {
-"name": "John Doe",
-"email": "johndoe@example.com",
-"password": "123456"
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "123456"
 }
+Save to grepper
+Response:
 
-Request: POST /users
+json
+Copy code
+{
+  "id": "user_id",
+  "name": "John Doe",
+  "email": "johndoe@example.com"
+}
+Save to grepper
+</details>
+<details>
+<summary>Update User</summary>
+Request:
+
+http
+Copy code
+PATCH /users
 Authorization: Required
-Request Body: JSON object with name, email, and password properties.
-Response: Returns the created user's data, including the id, name, and email.
-
-Update User
-Update an existing user's information by sending a PATCH request to the /users endpoint. You should provide the following data in the request body:
+Content-Type: application/json
 
 {
-"name": "Updated Name",
-"email": "updated@example.com",
-"password": "newpassword"
+  "name": "Updated Name",
+  "email": "updated@example.com",
+  "password": "newpassword"
 }
+Save to grepper
+Response:
 
-Request: PATCH /users
+json
+Copy code
+{
+  "id": "user_id",
+  "name": "Updated Name",
+  "email": "updated@example.com"
+}
+Save to grepper
+</details>
+<details>
+<summary>Delete User</summary>
+Request:
+
+http
+Copy code
+DELETE /users
 Authorization: Required
-Request Body: JSON object with updated name, email, and password properties.
-Response: Returns the updated user's data, including the id, name, and email.
+Save to grepper
+Response:
 
-Delete User
-Delete an existing user by sending a DELETE request to the /users endpoint.
+json
+Copy code
+{
+  "message": "User has been deleted."
+}
+Save to grepper
+</details>
+<details>
+<summary>List Users</summary>
+Request:
 
-Request: DELETE /users
+http
+Copy code
+GET /users
 Authorization: Required
-Response: Returns a message indicating the user has been deleted.
+Save to grepper
+Response:
 
-List Users
-Retrieve a list of all users by sending a GET request to the /users endpoint.
-
-Request: GET /users
-Authorization: Required
-Response: Returns an array of user objects, each containing the id, name, and email.
-
+json
+Copy code
+[
+  {
+    "id": "user_id",
+    "name": "John Doe",
+    "email": "johndoe@example.com"
+  },
+  {
+    "id": "user_id",
+    "name": "Jane Doe",
+    "email": "janedoe@example.com"
+  },
+  // ...
+]
+Save to grepper
+</details>
 Contacts
+<details>
+<summary>Create Contact</summary>
+Request:
 
-Create Contact
-Create a new contact by sending a POST request to the /contacts endpoint. You should provide the following data in the request body:
+http
+Copy code
+POST /contacts
+Authorization: Required
+Content-Type: application/json
 
 {
-"name": "Contact Name",
-"email": "contact@example.com",
-"phone": "555-1234"
+  "name": "Contact Name",
+  "email": "contact@example.com",
+  "phone": "555-1234"
 }
+Save to grepper
+Response:
 
-Request: POST /contacts
+json
+Copy code
+{
+  "id": "contact_id",
+  "name": "Contact Name",
+  "email": "contact@example.com",
+  "phone": "555-1234"
+}
+Save to grepper
+</details>
+<details>
+<summary>Update Contact</summary>
+Request:
+
+http
+Copy code
+PATCH /contacts/{id}
 Authorization: Required
-Request Body: JSON object with name, email, and phone properties.
-Response: Returns the created contact's data, including the id, name, email, and phone.
-
-Update Contact
-Update an existing contact's information by sending a PATCH request to the /contacts/{id} endpoint. Replace {id} with the ID of the contact you want to update. You should provide the following data in the request body:
+Content-Type: application/json
 
 {
-"name": "Updated Name",
-"email": "updated@example.com",
-"phone": "555-5678"
+  "name": "Updated Name",
+  "email": "updated@example.com",
+  "phone": "555-5678"
 }
+Save to grepper
+Response:
 
-Request: PATCH /contacts/{id}
+json
+Copy code
+{
+  "id": "contact_id",
+  "name": "Updated Name",
+  "email": "updated@example.com",
+  "phone": "555-5678"
+}
+Save to grepper
+</details>
+<details>
+<summary>Delete Contact</summary>
+Request:
+
+http
+Copy code
+DELETE /contacts/{id}
 Authorization: Required
-Request Body: JSON object with updated name, email, and phone properties.
-Response: Returns the updated contact's data, including the id, name, email, and phone.
+Save to grepper
+Response:
 
-Delete Contact
-Delete an existing contact by sending a DELETE request to the /contacts/{id} endpoint. Replace {id} with the ID of the contact you want to delete.
+json
+Copy code
+{
+  "message": "Contact has been deleted."
+}
+Save to grepper
+</details>
+<details>
+<summary>List All Contacts</summary>
+Request:
 
-Request: DELETE /contacts/{id}
+http
+Copy code
+GET /contacts
 Authorization: Required
-Response: Returns a message indicating the contact has been deleted.
+Save to grepper
+Response:
 
-List All Contacts
-Retrieve a list of all contacts by sending a GET request to the /contacts endpoint.
+json
+Copy code
+[
+  {
+    "id": "contact_id",
+    "name": "Contact Name 1",
+    "email": "contact1@example.com",
+    "phone": "555-1234"
+  },
+  {
+    "id": "contact_id",
+    "name": "Contact Name 2",
+    "email": "contact2@example.com",
+    "phone": "555-5678"
+  },
+  // ...
+]
+Save to grepper
+</details>
+Please ensure that you include the required Authorization header with a valid bearer token when accessing authenticated endpoints.
 
-Request: GET /contacts
-Authorization: Required
-Response: Returns an array of contact objects, each containing the id, name, email, and phone.
-Please ensure that you include the required Authorization header with a valid bearer token when accessing authenticated endpoints. For more details on each endpoint, including example responses, refer to the corresponding section in this documentation. Happy coding!
+For more details on each endpoint, including example responses, refer to the corresponding section in this documentation.
+
+Happy coding!
+
+html
+Copy code
+<script>
+  function copyToClipboard(text) {
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    alert('Request copied to clipboard!');
+  }
+</script>
+```
