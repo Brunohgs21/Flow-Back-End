@@ -27,8 +27,10 @@ Content-Type: application/json
 ```
 
 Response:
+
 json
 
+```
 {
 "id": "user_id",
 "name": "John Doe",
@@ -36,6 +38,7 @@ json
 "phone": "2121222",
 "createdAt: DATE"
 }
+```
 
 ## Update User
 
@@ -55,8 +58,10 @@ Content-Type: application/json
 ```
 
 Response:
+
 json
 
+```
 {
 "id": "user_id",
 "name": "Updated Name",
@@ -64,6 +69,7 @@ json
 "phone": "2121222",
 "createdAt": DATE,
 }
+```
 
 ## Delete User
 
@@ -121,12 +127,15 @@ Content-Type: application/json
 Response:
 
 json
+
+```
 {
 "id": "contact_id",
 "name": "Contact Name",
 "email": "contact@example.com",
 "phone": "555-1234"
 }
+```
 
 ## Update Contact
 
@@ -148,12 +157,15 @@ Content-Type: application/json
 Response:
 
 json
+
+```
 {
 "id": "contact_id",
 "name": "Updated Name",
 "email": "updated@example.com",
 "phone": "555-5678"
 }
+```
 
 ## Delete Contact
 
@@ -178,6 +190,8 @@ Authorization: Required
 Response:
 
 json
+
+```
 [
 {
 "id": "contact_id",
@@ -193,10 +207,9 @@ json
 },
 // ...
 ]
+```
 
 Please ensure that you include the required Authorization header with a valid bearer token when accessing authenticated endpoints.
-
-For more details on each endpoint, including example responses, refer to the corresponding section in this documentation.
 
 Happy coding!
 
