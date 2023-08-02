@@ -212,7 +212,3 @@ json
 Please ensure that you include the required Authorization header with a valid bearer token when accessing authenticated endpoints.
 
 Happy coding!
-
-```
-
-```
